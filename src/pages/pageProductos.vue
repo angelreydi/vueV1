@@ -2,7 +2,7 @@
   <div >
     <div class="row q-pa-sm">
       <div class="col-4 ">
-        <p>NOTAS</p>
+        <p>PRODUCTOS</p>
       </div>
       <div class="col-8">
         <div class="row">
@@ -125,7 +125,7 @@
 
         <tbody :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'">
 
-        <tr @click="detalle">
+        <tr>
           <td class="text-left">343</td>
           <td class="text-left">Doña santusa -santa fe klan</td>
           <td class="text-right">15/4/2025 16:12 PM</td>
@@ -133,7 +133,7 @@
             Venta al credito
           </q-badge></td>
         </tr>
-        <tr @click="detalle">
+        <tr>
           <td class="text-left">543534</td>
           <td class="text-left">Doña santusa -santa fe klan fe de jujuy</td>
           <td class="text-right">15/4/2025 16:12 PM</td>
@@ -188,9 +188,7 @@ async function listar(index, done){
 function nuevo(){
   router.push('/nuevo')
 }
-function detalle(){
-  router.push('/detalle')
-}
+
 </script>
 
 

@@ -36,7 +36,7 @@
           </q-item-section>
           <q-item-section>NOTAS</q-item-section>
         </q-item>
-        <q-item clickable v-ripple v-if="true" @click="navegar('vista1')">
+        <q-item clickable v-ripple v-if="true" @click="navegar('productos')">
           <q-item-section avatar>
             <q-icon color="primary" name="home" />
           </q-item-section>
