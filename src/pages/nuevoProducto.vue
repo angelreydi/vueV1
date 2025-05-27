@@ -33,13 +33,13 @@
       </div>
       <div class="row">
         <div class="q-pa-md">
-          <q-btn label="Tomar Foto" color="primary" @click="takePhoto" />
+          <q-btn icon="camera" color="primary" @click="takePhoto" />
           <div v-if="image" class="q-mt-md">
             <img :src="image" alt="Imagen tomada" style="max-width: 100%;" />
           </div>
         </div>
         <label class="col">Foto</label>
-        <q-btn color="primary" @click="takePhoto" label="+" style="margin-left: 5px"/>
+
         <q-file class="col"
                 v-model="selectedFile"
                 label="Seleccionar archivo"
