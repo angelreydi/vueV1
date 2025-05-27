@@ -11,7 +11,7 @@
       <q-input
         filled
         label="Nombre"
-      />
+       model-value=""/>
       <div class="row ">
         <div class="col">
           <q-input
@@ -34,7 +34,7 @@
       <div class="row">
         <div class="q-pa-md">
           <label class="col">Foto: </label>
-          <q-btn icon="camera" color="primary" @click="takePhoto" />
+          <q-btn icon="camera" color="primary"  />
         </div>
 
 
@@ -89,11 +89,14 @@ export default {
     const name = ref(null)
     const age = ref(null)
     const accept = ref(false)
-
+    const selectedFile = ref(null)
+  const handleFileChange = ref(null)
     return {
       name,
       age,
       accept,
+      selectedFile,
+      handleFileChange,
 
       onSubmit () {
         if (accept.value !== true) {
