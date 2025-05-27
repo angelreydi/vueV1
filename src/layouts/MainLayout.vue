@@ -12,10 +12,15 @@
         />
 
         <q-toolbar-title>
-          Quasar App
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <q-btn
+          label="Peso Arg" icon="cached" color="blue"
+        />
+        <q-btn
+          icon="shopping_cart" color="primary"
+        />
+
       </q-toolbar>
     </q-header>
 
@@ -24,19 +29,48 @@
       show-if-above
       bordered
     >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
+      <q-list bordered>
+        <q-item clickable v-ripple v-if="true" @click="navegar('inicio')">
+          <q-item-section avatar>
+            <q-icon color="primary" name="home" />
+          </q-item-section>
+          <q-item-section>NOTAS</q-item-section>
+        </q-item>
+        <q-item clickable v-ripple v-if="true" @click="navegar('vista1')">
+          <q-item-section avatar>
+            <q-icon color="primary" name="home" />
+          </q-item-section>
+          <q-item-section>PRODUCTOS</q-item-section>
+        </q-item>
+        <q-item clickable v-ripple  @click="navegar('vista2')">
+          <q-item-section avatar>
+            <q-icon color="primary" name="people" />
+          </q-item-section>
+          <q-item-section>Clientes</q-item-section>
 
-        <EssentialLink
-          v-for="link in linksList"
-          :key="link.title"
-          v-bind="link"
-        />
+        </q-item>
+        <q-item clickable v-ripple v-if="true" @click="navegar('vista3')">
+          <q-item-section avatar>
+            <q-icon color="primary" name="store" />
+          </q-item-section>
+          <q-item-section>Ventas</q-item-section>
+
+        </q-item>
+        <q-item clickable v-ripple @click="navegar('vista4')">
+          <q-item-section avatar>
+            <q-icon color="primary" name="store" />
+          </q-item-section>
+          <q-item-section>Sucursales</q-item-section>
+
+        </q-item>
       </q-list>
+      <q-item>
+        Usuario conectado: XD
+      </q-item>
+      <q-item class="flex flex-center">
+
+        <q-btn color="deep-orange" glossy label="Cerrar sesion" @click="salir" />
+      </q-item>
     </q-drawer>
 
     <q-page-container>
@@ -46,57 +80,30 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
-
+import { ref,onMounted  } from 'vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const leftDrawerOpen = ref(false)
-
 function toggleLeftDrawer () {
   leftDrawerOpen.value = !leftDrawerOpen.value
+}
+onMounted(() => {
+  console.log('XD')
+
+})
+function navegar(ruta) {
+  router.push(ruta);
+}
+
+//function actualizarRolSeleccionado(nuevoRol) {
+//rolSeleccionado.value = nuevoRol
+//}
+
+//function actualizarSucursalSeleccionada(nuevaSucursal) {
+//  sucursalSeleccionada.value = nuevaSucursal
+//}
+
+function salir(){
+  router.push('/')
 }
 </script>
