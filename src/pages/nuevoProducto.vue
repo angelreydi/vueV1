@@ -34,7 +34,8 @@
       <div class="row">
         <div class="q-pa-md">
           <label class="col">Foto: </label>
-          <q-btn icon="camera" color="primary"  />
+          <q-btn icon="camera" color="primary"  @click="captureImage"/>
+          <img :src="imageSrc">
         </div>
 
 
@@ -83,6 +84,7 @@
 <script>
 import { useQuasar } from 'quasar'
 import { ref } from 'vue'
+import { Camera, CameraResultType } from '@capacitor/camera'
 export default {
   setup () {
     const $q = useQuasar()
@@ -91,7 +93,24 @@ export default {
     const accept = ref(false)
     const selectedFile = ref(null)
   const handleFileChange = ref(null)
+    const imageSrc = ref('')
+
+    async function captureImage () {
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: true,
+        resultType: CameraResultType.Uri
+      })
+
+      // The result will vary on the value of the resultType option.
+      // CameraResultType.Uri - Get the result from image.webPath
+      // CameraResultType.Base64 - Get the result from image.base64String
+      // CameraResultType.DataUrl - Get the result from image.dataUrl
+      imageSrc.value = image.webPath
+    }
+
     return {
+      captureImage,
       name,
       age,
       accept,
