@@ -12,6 +12,7 @@
         />
 
         <q-toolbar-title>
+          holaaprueba
         </q-toolbar-title>
 
         <q-btn
