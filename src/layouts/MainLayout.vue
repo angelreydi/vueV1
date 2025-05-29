@@ -1,18 +1,11 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="hHh lpR fFf">
+    <q-header elevated class="bg-primary text-white">
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title>
-          holaaprueba
+
         </q-toolbar-title>
 
         <q-btn
@@ -21,14 +14,11 @@
         <q-btn
           icon="shopping_cart" color="primary"
         />
-
       </q-toolbar>
     </q-header>
 
     <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
+      show-if-above v-model="leftDrawerOpen" side="left" bordered
     >
       <q-list bordered>
         <q-item clickable v-ripple v-if="true" @click="navegar('inicio')">

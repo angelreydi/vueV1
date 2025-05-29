@@ -114,18 +114,18 @@
         @load="listar"
         :debounce="500"
       ><!-- Scroll infinito aquí -->
-        <thead class="bg-teal" >
+        <thead class="bg-teal full-width" >
         <tr>
-          <th class="text-left" style="width: 10%;">id</th>
-          <th class="text-center" style="width: 50%;">Cliente</th>
-          <th class="text-right" style="width: 20%;">Registro</th>
-          <th class="text-right" style="width: 20%;">Etiqueta</th>
+          <th class="text-left" >id</th>
+          <th class="text-left" >Cliente</th>
+          <th class="text-center" >Registro</th>
+          <th class="text-center" >Etiqueta</th>
         </tr>
         </thead>
 
         <tbody :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'">
 
-        <tr @click="detalle">
+        <tr @click="detalle" class="full-width">
           <td class="text-left">343</td>
           <td class="text-left">Doña santusa -santa fe klan</td>
           <td class="text-right">15/4/2025 16:12 PM</td>
@@ -141,7 +141,7 @@
             Venta al contado
           </q-badge></td>
         </tr>
-        <tr>
+        <tr @click="detalle">
           <td class="text-left">543534</td>
           <td class="text-left">Doña santusa -santa fe klan fe de jujuy</td>
           <td class="text-right">15/4/2025 16:12 PM</td>
