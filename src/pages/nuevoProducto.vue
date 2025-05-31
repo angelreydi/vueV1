@@ -13,29 +13,32 @@
         label="Nombre"
        model-value=""/>
       <div class="row ">
-        <div class="col">
+        <div class="col-5 q-mr-md">
           <q-input
-            filled
             v-model="name"
             label="Precio unitario"
-            hint="Ps.Arg"
+            suffix="Ps.Arg"
           />
 
         </div>
-        <div class="col">
+        <div class="col-5">
           <q-input
-            filled
             v-model="name"
             label="Precio por mayor"
-            hint="Ps.Arg"
+            suffix="Ps.Arg"
           />
         </div>
+
+      </div>
+      <div class="row">
+        <img v-if="imageSrc" :src="imageSrc" class="img full-width full-height  ">
+        <img v-if="imageUrlSelected" :src="imageUrlSelected" class="img full-width full-height  ">
       </div>
       <div class="row">
         <div class="q-pa-md">
-          <label class="col">Foto: </label>
+          <label class="col">Fotos: </label>
           <q-btn icon="camera" color="primary"  @click="captureImage"/>
-          <img :src="imageSrc">
+
         </div>
 
 
@@ -72,7 +75,10 @@
           </div>
         </div>
       </div>
-      <div class="bi-align-bottom">
+      <div class="row justify-end">
+          <q-label class="text-caption text-grey">Mas detalles</q-label>
+      </div>
+      <div class=" fixed-bottom q-pt-md q-pb-md q-pr-md">
         <q-btn class="full-width" label="Guardar" type="submit" color="primary"/>
 
       </div>
@@ -92,21 +98,35 @@ export default {
     const age = ref(null)
     const accept = ref(false)
     const selectedFile = ref(null)
-  const handleFileChange = ref(null)
     const imageSrc = ref('')
+    const imageUrlSelected = ref('')
 
     async function captureImage () {
       const image = await Camera.getPhoto({
         quality: 90,
         allowEditing: true,
-        resultType: CameraResultType.Uri
+        resultType: CameraResultType.DataUrl
       })
 
       // The result will vary on the value of the resultType option.
       // CameraResultType.Uri - Get the result from image.webPath
       // CameraResultType.Base64 - Get the result from image.base64String
       // CameraResultType.DataUrl - Get the result from image.dataUrl
-      imageSrc.value = image.webPath
+      imageSrc.value = image.dataUrl
+      console.log('imagen:', imageSrc.value)
+      console.log('imagen:', imageSrc)
+    }
+    function handleFileChange(file) {
+      if (!file) {
+        imageUrlSelected.value = '';
+        return;
+      }
+
+      // Crear una URL temporal para el archivo (blob:)
+      imageUrlSelected.value = URL.createObjectURL(file);
+
+      // Opcional: Liberar memoria cuando el componente se desmonte
+      // onUnmounted(() => URL.revokeObjectURL(imageUrl.value));
     }
 
     return {
@@ -116,6 +136,7 @@ export default {
       accept,
       selectedFile,
       handleFileChange,
+      imageSrc,
 
       onSubmit () {
         if (accept.value !== true) {

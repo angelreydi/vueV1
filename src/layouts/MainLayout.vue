@@ -1,19 +1,21 @@
 <template>
-  <q-layout view="hHh lpR fFf">
-    <q-header elevated class="bg-primary text-white">
+  <q-layout  view="hHh lpR fFf" class="bg-grey-3">
+    <q-header elevated class="bg-primary">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
         <q-toolbar-title>
-
         </q-toolbar-title>
+        <q-btn flat round icon="shopping_bag" />
+        <q-btn flat round icon="cached"/>
+        <q-btn flat round icon="shopping_cart" />
+        <q-btn flat round icon="notifications"  />
 
-        <q-btn
-          label="Peso Arg" icon="cached" color="blue"
-        />
-        <q-btn
-          icon="shopping_cart" color="primary"
-        />
+        <q-btn flat round icon="security_update_good" />
+          <q-avatar >
+            <img src="https://cdn.quasar.dev/img/avatar2.jpg" >
+          </q-avatar>
+        <q-btn flat round icon="more_vert" />
       </q-toolbar>
     </q-header>
 
@@ -64,7 +66,7 @@
       </q-item>
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container class="">
       <router-view />
     </q-page-container>
   </q-layout>

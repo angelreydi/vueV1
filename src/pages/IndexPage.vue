@@ -79,7 +79,8 @@
                     <div class="col">
                       <q-input
                         filled
-                        outlined/>
+                        outlined
+                        type="date"/>
                     </div>
                   </div>
                   <div class="row q-pa-sm">
@@ -98,66 +99,95 @@
     </div>
     <div class="row q-px-md">
       <q-input
-        class="full-width "
+        class="full-width q-mb-xs"
         outlined
         filled
-
         label="Nombre de cliente o id"
-        hint="filtrar por criterios"
-
+        suffix="filtrar"
       />
     </div>
 
-    <q-markup-table flat bordered
-                    class="full-width">
       <q-infinite-scroll
         @load="listar"
         :debounce="500"
       ><!-- Scroll infinito aquí -->
-        <thead class="bg-teal full-width" >
-        <tr>
-          <th class="text-left" >id</th>
-          <th class="text-left" >Cliente</th>
-          <th class="text-center" >Registro</th>
-          <th class="text-center" >Etiqueta</th>
-        </tr>
-        </thead>
+        <div class=" row items-start  q-gutter-md full-width">
+          <q-card class="col my-card full-width" flat bordered>
+            <q-card-section horizontal class="q-pa-xs" @click="detalle">
+              <div class="col-8">
+                <q-label class="row text-bold">475</q-label>
+                <q-label class="row q-pl-md">Doña saturnina - Santa Fe klan</q-label>
+                <q-label class="row q-pl-md">15/12/2021</q-label>
+              </div>
+              <div class="col-4 justify-center q-pa-md">
+                <label><q-badge rounded color="purple" label="Cotizacion" /></label>
+              </div>
+            </q-card-section>
+          </q-card>
+        </div>
+        <div class=" row items-start  q-gutter-md full-width">
+          <q-card class="col my-card full-width" flat bordered>
+            <q-card-section horizontal class="q-pa-xs" @click="detalle">
+              <div class="col-8">
+                <q-label class="row text-bold">463</q-label>
+                <q-label class="row q-pl-md">Doña saturnina - Santa Fe klan</q-label>
+                <q-label class="row q-pl-md">15/12/2021</q-label>
+              </div>
+              <div class="col-4 justify-center q-pa-md">
+                <label><q-badge rounded color="orange" label="Vneta credito" /></label>
+              </div>
+            </q-card-section>
+          </q-card>
+        </div>
 
-        <tbody :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'">
+        <div class=" row items-start  q-gutter-md full-width">
+          <q-card class="col my-card full-width" flat bordered>
+            <q-card-section horizontal class="q-pa-xs" @click="detalle">
+              <div class="col-8">
+                <q-label class="row text-bold">12334</q-label>
+                <q-label class="row q-pl-md">Doña saturnina - Santa Fe klan</q-label>
+                <q-label class="row q-pl-md">15/12/2021</q-label>
+              </div>
+              <div class="col-4 justify-center q-pa-md">
+                <label><q-badge rounded color="green" label="Venta credito" /></label>
+              </div>
+            </q-card-section>
+          </q-card>
+        </div>
+        <div class=" row items-start  q-gutter-md full-width">
+          <q-card class="col my-card full-width" flat bordered>
+            <q-card-section horizontal class="q-pa-xs" @click="detalle">
+              <div class="col-8">
+                <q-label class="row text-bold">7504</q-label>
+                <q-label class="row q-pl-md">Doña saturnina - Santa Fe klan</q-label>
+                <q-label class="row q-pl-md">15/12/2021</q-label>
+              </div>
+              <div class="col-4 justify-center q-pa-md">
+                <label><q-badge rounded color="yellow" label="Vneta relazada" /></label>
+              </div>
+            </q-card-section>
+          </q-card>
+        </div>
+        <div class=" row items-start  q-gutter-md full-width">
+          <q-card class="col my-card full-width" flat bordered>
+            <q-card-section horizontal class="q-pa-xs" @click="detalle">
+              <div class="col-8">
+                <q-label class="row text-bold"> 475</q-label>
+                <q-label class="row q-pl-md">Doña saturnina - Santa Fe klan</q-label>
+                <q-label class="row q-pl-md">15/12/2021</q-label>
+              </div>
+              <div class="col-4 justify-center q-pa-md">
+                <label><q-badge rounded color="red" label="Delivery devuelto" /></label>
+              </div>
+            </q-card-section>
+          </q-card>
+        </div>
 
-        <tr @click="detalle" class="full-width">
-          <td class="text-left">343</td>
-          <td class="text-left">Doña santusa -santa fe klan</td>
-          <td class="text-right">15/4/2025 16:12 PM</td>
-          <td class="text-right"><q-badge transparent align="middle" color="purple">
-            Venta al credito
-          </q-badge></td>
-        </tr>
-        <tr @click="detalle">
-          <td class="text-left">543534</td>
-          <td class="text-left">Doña santusa -santa fe klan fe de jujuy</td>
-          <td class="text-right">15/4/2025 16:12 PM</td>
-          <td class="text-right"><q-badge transparent align="middle" color="green">
-            Venta al contado
-          </q-badge></td>
-        </tr>
-        <tr @click="detalle">
-          <td class="text-left">543534</td>
-          <td class="text-left">Doña santusa -santa fe klan fe de jujuy</td>
-          <td class="text-right">15/4/2025 16:12 PM</td>
-          <td class="text-right"><q-badge transparent align="middle" color="orange">
-            Venta al credito
-          </q-badge></td>
-        </tr>
-        <tr>
-          <div v-if="hayMasDatos" class="text-center row justify-center">
-            <q-spinner-dots color="primary" size="40px">
-            </q-spinner-dots>
-          </div>
-        </tr>
-        </tbody>
+
+
+
+
       </q-infinite-scroll>
-    </q-markup-table>
   </div>
 
 </template>
